@@ -4,17 +4,18 @@
  *
  * @format
  */
-
-
-
-import {  View } from 'react-native';
+import { View } from 'react-native';
 import Routes from './src/routes/routes';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 function App() {
   return (
-    <View style={{flex:1}}>
-      <Routes/>
-    </View>
+    <Provider store={store}>
+      <View style={{ flex: 1 }}>
+        <Routes />
+      </View>
+    </Provider>
   );
 }
 

@@ -10,16 +10,21 @@ const bottomTabArray = [
     { name: "Cart", icon: CartIcon, path: "Cart" }
 ]
 
-const BottomTab :React.FC= ({ state, navigation }) => {
+const BottomTab: React.FC = ({ state, navigation }) => {
+    const currentRoute = state.routes[state.index].name;
+    const hiddenRoutes = ['Cart'];
+    if (hiddenRoutes.includes(currentRoute)) {
+        return null;
+    }
     return (
-        <View style={{backgroundColor:Colors.primaryColor,flexDirection:"row",justifyContent:"space-between",paddingVertical:HEIGHT*0.02,shadowColor: 'green', shadowOffset: { width: 10, height: HEIGHT*0.2 }, shadowOpacity: 1, shadowRadius: 0, elevation: 5}}>
+        <View style={{ backgroundColor: Colors.primaryColor, flexDirection: "row", justifyContent: "space-between", paddingVertical: HEIGHT * 0.02, shadowColor: '#171717', shadowOffset: { width: -2, height: 4 }, shadowOpacity: 0.2, shadowRadius: 3, elevation: 5 }}>
             {
                 bottomTabArray.map((item, index) => {
-                    const isFocused=index==state.index
+                    const isFocused = index == state.index
                     return (
-                        <Pressable onPress={()=>navigation.navigate(item.path)} key={index.toString()} style={{alignItems:"center",paddingHorizontal:WIDTH*0.05,width:WIDTH*0.24}}>
-                            <Image source={item.icon} tintColor={isFocused?Colors.secondaryColor:Colors.textColor} style={{height:WIDTH*0.06,width:WIDTH*0.06}}/>
-                            <Text style={{color:isFocused?Colors.secondaryColor:Colors.textColor,marginTop:HEIGHT*0.002,fontSize:RFValue(12),fontWeight:isFocused?"600":"400"}}>{item.name}</Text>
+                        <Pressable onPress={() => navigation.navigate(item.path)} key={index.toString()} style={{ alignItems: "center", paddingHorizontal: WIDTH * 0.05, width: WIDTH * 0.24 }}>
+                            <Image source={item.icon} tintColor={isFocused ? Colors.secondaryColor : Colors.textColor} style={{ height: WIDTH * 0.06, width: WIDTH * 0.06 }} />
+                            <Text style={{ color: isFocused ? Colors.secondaryColor : Colors.textColor, marginTop: HEIGHT * 0.002, fontSize: RFValue(12), fontWeight: isFocused ? "600" : "400" }}>{item.name}</Text>
                         </Pressable>
                     )
                 }
