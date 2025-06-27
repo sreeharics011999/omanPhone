@@ -8,7 +8,7 @@ import { EndPoint } from "../constants/ApiUrl"
 
 
 const HomeScreen = ({ navigation }) => {
-    const [homeData, setHomeData] = useState({productList:{},bannerData:[]})
+    const [homeData, setHomeData] = useState({ productList: {}, bannerData: [] })
     useEffect(() => {
         fetchHomeBanner()
         fetchHomeData()
@@ -16,12 +16,29 @@ const HomeScreen = ({ navigation }) => {
 
     const fetchHomeBanner = async () => {
         const bannerResponce = await ApiConfig("GET", EndPoint?.banner())
-        setHomeData(prev => ({ ...prev, bannerData: bannerResponce?.data?.data?.slider }))
-
+        try {
+            if (bannerResponce?.status == 200) {
+                if (bannerResponce?.data) {
+                    setHomeData(prev => ({ ...prev, bannerData: bannerResponce?.data?.data?.slider }))
+                }
+            }
+        }
+        catch (error) {
+            console.error(error)
+        }
     }
     const fetchHomeData = async () => {
         const homeApiData = await ApiConfig("GET", EndPoint?.homePage())
-        setHomeData(prev => ({ ...prev, productList: homeApiData?.data }))
+        try {
+            if (homeApiData?.status == 200) {
+                if (homeApiData?.data) {
+                    setHomeData(prev => ({ ...prev, productList: homeApiData?.data }))
+                }
+            }
+        }
+        catch (error) {
+            console.error(error)
+        }
     }
     const homeScreenRender = (data) => {
         let renderItem
@@ -46,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
                 <Search placeHolder="Search products..." />
             </CommonHeader>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginBottom: HEIGHT * 0.15 }}>
-                <Carousel data={homeData?.bannerData} autoScroll={true}/>
+                <Carousel data={homeData?.bannerData} autoScroll={true} />
                 <FlatList data={homeData?.productList}
                     renderItem={({ item }) => homeScreenRender(item)}
                     keyExtractor={(_, index) => index.toString()}

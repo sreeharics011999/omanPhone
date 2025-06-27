@@ -54,7 +54,6 @@ const ProductDetailsScreen = ({ navigation, route }) => {
     catch (error) {
       console.error(error)
     }
-
   }
   const handleViewAll = () => {
     setViewDetail(true)
