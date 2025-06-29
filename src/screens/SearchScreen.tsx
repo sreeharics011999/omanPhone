@@ -1,4 +1,4 @@
-import { Text } from "react-native"
+import { EmptyData } from "../components"
 
-const SearchScreen=()=><Text>SearchScreen</Text>
+const SearchScreen=()=><EmptyData title="Search"/>
 export default SearchScreen

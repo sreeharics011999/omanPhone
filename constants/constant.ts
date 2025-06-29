@@ -10,7 +10,7 @@ const Colors={
     backgroundGrey:"#e0ded9",
     orange:"#ffc100"
 }
-const productImagePath="https://omanphone.smsoman.com/pub/media/catalog/product"
+const productImagePath="http://omanphone.smsoman.com/pub/media/catalog/product"
 const productSource=(image)=>{
     const uri={uri:`${productImagePath+image}`}
     return uri

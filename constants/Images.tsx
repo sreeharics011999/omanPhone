@@ -17,6 +17,7 @@ import ToggleIcon from '../../assets/Icons/Toggle/Menu.png';
 import SearchIcon from "../../assets/Icons/Search/Search.png"
 
 // images
-import AppIcon from "../../assets/Images/cell-phone.png"
-import Nodata from "../../assets/Images/no-data.png"
-export {ArrowIcon,BatteryIcon,SearchIcon,CartFillIcon,CartIcon,CategoriesIcon,DeleteIcon,FavouriteIcon,HomeIcon,LensIcon,MemoryIcon,NotificationIcon,RamIcon,SizeIcon,StarIcon,ToggleIcon,AppIcon,Nodata}
+import DummyBanner from "../../assets/Images/prjct-banner.jpg";
+import DummyPhone from "../../assets/Images/phone-image.jpg";
+
+export {ArrowIcon,BatteryIcon,SearchIcon,CartFillIcon,CartIcon,CategoriesIcon,DeleteIcon,FavouriteIcon,HomeIcon,LensIcon,MemoryIcon,NotificationIcon,RamIcon,SizeIcon,StarIcon,ToggleIcon,DummyBanner,DummyPhone}

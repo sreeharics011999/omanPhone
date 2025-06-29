@@ -1,5 +1,5 @@
-import { FlatList, Text, View } from "react-native"
-import { Button, CartCard, CommonHeader } from "../components"
+import { FlatList, SafeAreaView, Text, View } from "react-native"
+import { Button, CartCard, CommonHeader, EmptyData } from "../components"
 import { ArrowIcon } from "../constants/Images"
 import { Colors, HEIGHT, WIDTH } from "../constants/constant";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -19,20 +19,26 @@ const CartScreen = ({ navigation }) => {
         dispatch(deleteCart(id))
     }
     return (
-        <View style={{ flex: 1 }}>
-            <CommonHeader title={`My Cart (2)`} leftIcon={ArrowIcon} onPressLeft={() => navigation.goBack()} />
-            <FlatList
-                data={cartArray}
-                renderItem={({ item }) => <CartCard product={item} onPress={() => handleDelete(item?.id)} setItemPrice={setItemPrice} itemPrice={itemPrice} />}
-            />
-            <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: Colors.primaryColor, paddingVertical: HEIGHT * 0.01, paddingHorizontal: WIDTH * 0.05, position: "absolute", width: WIDTH, bottom: 0 }}>
-                <View>
-                    <Text style={{ color: Colors.textColor, fontSize: RFValue(10), fontWeight: "600" }}>Total :</Text>
-                    <Text style={{ color: Colors.textColor, fontSize: RFValue(12), fontWeight: "900" }}>OMR {total}</Text>
-                </View>
-                <Button btnTitle="Checkout" btnStyle={{ width: WIDTH * 0.3 }} titleStyle={{ textTransform: "uppercase" }} />
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
+                <CommonHeader title={`My Cart (${cartArray?.length})`} leftIcon={ArrowIcon} onPressLeft={() => navigation.goBack()} />
+                {
+                    cartArray?.length == 0 ? <EmptyData title="Cart" /> : <View style={{ flex: 1 }}>
+                        <FlatList
+                            data={cartArray}
+                            renderItem={({ item }) => <CartCard product={item} onPress={() => handleDelete(item?.id)} setItemPrice={setItemPrice} itemPrice={itemPrice} />}
+                        />
+                        <View style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: Colors.primaryColor, paddingVertical: HEIGHT * 0.01, paddingHorizontal: WIDTH * 0.05, position: "absolute", width: WIDTH, bottom: 0 }}>
+                            <View>
+                                <Text style={{ color: Colors.textColor, fontSize: RFValue(10), fontWeight: "600" }}>Total :</Text>
+                                <Text style={{ color: Colors.textColor, fontSize: RFValue(12), fontWeight: "900" }}>OMR {total}</Text>
+                            </View>
+                            <Button btnTitle="Checkout" btnStyle={{ width: WIDTH * 0.3 }} titleStyle={{ textTransform: "uppercase" }} />
+                        </View>
+                    </View>
+                }
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 export default CartScreen

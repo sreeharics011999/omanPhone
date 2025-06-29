@@ -3,17 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        cartData: [],
-        homeData:[],
-        homeBanner:[]
+        cartData: []
     },
     reducers: {
-        homeData(state,action){
-            state.homeData=action.payload
-        },
-        homeBanner(state,action){
-            state.homeBanner=action.payload
-        },
         addCart(state, action) {
             state.cartData.push(action.payload)
         },
@@ -24,5 +16,5 @@ const userSlice = createSlice({
     },
 });
 
-export const { homeData,homeBanner,addCart, deleteCart } = userSlice.actions;
+export const { addCart, deleteCart } = userSlice.actions;
 export default userSlice.reducer;

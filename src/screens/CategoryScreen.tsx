@@ -1,4 +1,4 @@
-import { Text } from "react-native"
+import { EmptyData } from "../components"
 
-const CategoryScreen=()=><Text>CategoryScreen</Text>
+const CategoryScreen=()=><EmptyData title="Category"/>
 export default CategoryScreen

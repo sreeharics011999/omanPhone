@@ -1,5 +1,5 @@
 
-const BaseUrl = "https://omanphone.smsoman.com/api/"
+const BaseUrl = "http://omanphone.smsoman.com/api/"
 let url
 const EndPoint = {
     banner:()=>{

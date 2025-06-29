@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { CartScreen, CategoryScreen, HomeScreen, ProductDetailsScreen, SearchScreen, SplashScreen } from '../screens/Index';
+import { CartScreen, CategoryScreen, HomeScreen, ProductDetailsScreen, SearchScreen } from '../screens/Index';
 import { BottomTab } from '../components';
 
 const Stack = createNativeStackNavigator();
@@ -21,7 +21,6 @@ const BottomBar = () => {
 const StackRoute = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown:false}}>
-            <Stack.Screen name="Splash" component={SplashScreen}/>
             <Stack.Screen name="HomeScreen" component={BottomBar} />
             <Stack.Screen name="ProductDetail" component={ProductDetailsScreen} />
         </Stack.Navigator>
